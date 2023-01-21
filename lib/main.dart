@@ -2,7 +2,7 @@
 //import 'package:demo2/views/login_view.dart';
 //import 'package:demo2/views/register_view.dart';
 //import 'package:demo2/views/login_view.dart';
-import 'dart:html';
+//import 'dart:html';
 import 'package:demo2/constants/routes.dart';
 import 'package:demo2/services/auth/auth_service.dart';
 import 'package:demo2/views/login_view.dart';
@@ -24,6 +24,7 @@ import 'package:flutter/material.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp( MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         
@@ -55,19 +56,12 @@ class HomePage extends StatelessWidget {
             case ConnectionState.done:
             final user= AuthService.firebase().currentUser;
             if (user!= null){
-              //devtools.log(user.toString());
-            // if (user.isEmailVerified){
-              
-            //   return const MyappView();
-            // } else{
-            //   return const VerifyEmailView();
-            // } 
+           
             return const MyappView();
             } else {
                return const LoginView();
-              //return const RegisterPhoneView();
+           
             }
-            
             
               default:
               return const CircularProgressIndicator();

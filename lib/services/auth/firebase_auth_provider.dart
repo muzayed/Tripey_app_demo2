@@ -3,9 +3,9 @@ import 'package:demo2/services/auth/auth_exceptions.dart';
 import 'package:demo2/services/auth/auth_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuth, FirebaseAuthException;
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:demo2/firebase_options.dart';
 
-import '../../firebase_options.dart';
+//import '../../firebase_options.dart';
 
 class FirebaseAuthProvider implements AuthProvider{
   @override
@@ -13,7 +13,7 @@ class FirebaseAuthProvider implements AuthProvider{
   {required String email, 
    required String password})async{
     try{
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password,);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password,);
       final user= currentUser;
       if (user!=null){
         return user;
@@ -36,6 +36,8 @@ class FirebaseAuthProvider implements AuthProvider{
         }
 
   }
+  
+
 
 
 
